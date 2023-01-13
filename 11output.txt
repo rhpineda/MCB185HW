@@ -17,8 +17,6 @@ unit9_unfinished_tales
 /home/rick/Code/MCB185HW:
 00helloworld.py
 10hello.sh
-11
 11output.txt
 README.md
-README.md~
 E.coli
