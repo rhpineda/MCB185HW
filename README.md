@@ -7,9 +7,9 @@
 # About Me
 
 #### Major: Genetics and Genomics
-###Minor: Plant Biology
+### Minor: Plant Biology
 #### Year: 4rd Year
 
-#(Yes I did copy and paste a README from another repo)
+# (Yes I did copy and paste a README from another repo)
 
 
