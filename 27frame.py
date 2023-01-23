@@ -6,9 +6,16 @@
 
 # Note: use 0-based indexing for position and frame (biology uses 1-based)
 
+#---------------------------------------------------------------------------
 dna = 'ATGGCCTTT'
-
-
+pos = 0
+codon = 0
+for nt in range(len(dna)): 
+	print(pos, codon, dna[nt], '\t')
+	pos += 1
+	codon += 1
+	codon = codon%3
+#---------------------------------------------------------------------------	
 """
 python3 27frame.py
 0 0 A
