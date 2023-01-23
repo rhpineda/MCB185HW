@@ -5,21 +5,6 @@
 
 # Variation: try this with the range() function and slice syntax
 #---------------------------------------------------------------------------
-"""
-dna = 'ACTGAAAAAAAAAAA'
-andy = ''
-for nt in range(len(dna)):
-	if dna[nt] == 'A':
-		andy += 'T'
-	elif dna[nt] == 'C':
-		andy += 'G'
-	elif dna[nt] == 'G':
-		andy += 'C'
-	elif dna[nt] == 'T':
-		andy += 'A'
-print(andy)
-"""
-
 dna = 'ACTGAAAAAAAAAAA'
 andy = ''	
 for nt in range(len(dna)):
