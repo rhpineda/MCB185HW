@@ -3,8 +3,13 @@
 # Print out all the codons for the sequence below in reading frame 1
 
 # Hint: use the slice operator
-
+#---------------------------------------------------------------------------
 dna = 'ATAGCGAATATCTCTCATGAGAGGGAA'
+
+for nt in range(0,len(dna),3):
+	codon = dna[nt:nt+3]
+	print(codon)
+#---------------------------------------------------------------------------
 
 
 """
