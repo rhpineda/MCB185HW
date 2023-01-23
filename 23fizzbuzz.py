@@ -7,7 +7,17 @@
 
 # Note: this is a common interview question
 
-
+#---------------------------------------------------------------------------
+for i in range(1,101):
+	if i%3 == 0 and i%5 ==0:
+		print('FizzBuzz')
+	elif i%3 == 0:
+		print('Fizz')
+	elif i%5 == 0:
+		print('Buzz')
+	elif i != 0:
+		print (i)
+#---------------------------------------------------------------------------
 """
 python3 23fizzbuzz.py
 1
