@@ -6,7 +6,19 @@
 # Also print out how many combinations there are
 
 # Hint: if you get stuck for more than 10 minutes, get help
+#---------------------------------------------------------------------------
 
+
+aa = 'acdefghiklmnpqrstvwy'
+comb=0
+
+for i in range(len(aa)):
+	for j in range(len(aa)):
+		if (i!=j):
+			print(aa[i], aa[j], '\t')
+			comb += 1
+print(comb)
+#---------------------------------------------------------------------------
 
 """
 python3 28aapairs.py
