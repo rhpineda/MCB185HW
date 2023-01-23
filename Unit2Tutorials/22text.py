@@ -14,8 +14,12 @@ s = 'ACGT' # a string
 # The second number after : is one larger than the last index
 
 print(s, s[0], s[1])
+#---------------------------------
+
 print(s[2], s[2:3], s[2:4], s[2:5])
 
+print(s[0:4])
+print(s[0:3])
 # You can also do the following shortcuts
 
 print(s[:2]) # the 0 is implict on the left
@@ -28,13 +32,11 @@ s += 'n'   # note that += is a shorthand for s = s +, just like in math
 print(s)
 
 # The * operator repeats strings
-
 s *= 3
 print(s)
 
 # The len() function returns the length of a string
 # Some function like len() return values, others like print() do not
-
 print(len(s))
 
 # There are several ways to format strings
@@ -43,7 +45,6 @@ txt = 'Ian'
 num = 3/11
 
 # Previously, we have used the print() function with commas
-
 print(txt, num)
 
 # What if we want to control the way the text looks?
@@ -53,12 +54,10 @@ print(txt, num)
 # Method 1: f-strings, the best way
 # f-strings are the newest and best way to format strings
 # f-strings interpolate variables and other statements inside curly brackets
-
 print(f'{txt} {num}')
 print(f'{txt} {num:.3f}') # 3 digits of accuracy
 
 # You can even interpolate python code
-
 print(f'{2+2} {1/7:.5f} {len(txt)}')
 
 # The examples here are but the tip of a very large iceberg
@@ -68,12 +67,10 @@ print(f'{2+2} {1/7:.5f} {len(txt)}')
 #---------------------------------------------------
 
 # Method 2: printf-style formatting
-
 print('%s %.3f' % (txt, num))                # %s string, %f float
 print('%s %.3f %d %e' % (txt, num, 2.1, .1)) # %d integer, %e scientific
 
 # Method 3: str.format()
-
 print('{} {}'.format(txt, num))
 print('{} {:.3f}'.format(txt, num))
 
