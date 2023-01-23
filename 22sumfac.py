@@ -6,6 +6,17 @@
 
 # Note: you may not import math or any other library
 
+#---------------------------------------------------------------------------
+n = 5
+sum = 0
+fac = 1
+for i in range(n):
+	sum += (i+1)
+	fac = (i+1)*fac
+print(n)
+print(sum)
+print(fac)
+#---------------------------------------------------------------------------
 
 """
 python3 22sumfac.py
