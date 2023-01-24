@@ -21,6 +21,8 @@ for nt in range(len(dna)):
 		andy = andy[:(len(andy))-nt] + 'A' + andy[(len(andy))-nt:] 
 		#print(andy)
 print(andy)
+
+#Or just reverse a string some other way
 #---------------------------------------------------------------------------
 """
 python3 26anti.py
