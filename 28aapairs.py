@@ -8,16 +8,18 @@
 # Hint: if you get stuck for more than 10 minutes, get help
 #---------------------------------------------------------------------------
 
-
-aa = 'acdefghiklmnpqrstvwy'
-comb=0
-
-for i in range(len(aa)):
-	for j in range(len(aa)):
-		if (i!=j):
-			print(aa[i], aa[j], '\t')
-			comb += 1
-print(comb)
+#remove a from both after a run
+list1= 'ACDEFGHIKLMNPQRSTVWY' #Dont cange
+list2= 'ACDEFGHIKLMNPQRSTVWY' #Change
+count=0
+for i in range(len(list1)):
+	for j in range(len(list2)):
+		if (list1[i]!=list2[j]):
+			print(list1[i], list2[j])
+			count +=1
+		elif (list1[i]==list2[j]): continue
+	list2 = list2[1:]
+print(count)
 #---------------------------------------------------------------------------
 
 """
