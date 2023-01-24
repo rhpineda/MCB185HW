@@ -10,11 +10,19 @@
 # Then 'move' the window by adding 1 letter on one side
 # And subtracting 1 letter from the other side
 # Consider the pros/cons of this algorithm vs. nested loops
-
+#---------------------------------------------------------------------------
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
-
-
+gc = 0
+for i in range(len(seq)-(w-1)):
+	for j in range(len(seq[i:i+w])):
+		if (seq[i+j] == 'G' or seq[i+j] == 'C'):
+			gc += 1
+		else: 
+			continue
+	print(i,seq[i:i+w],f'{gc/w:.4f}') #(f'{i,seq[i:i+w],gc/(len(dna)):.2f}')
+	gc = 0
+#---------------------------------------------------------------------------
 """
 python3 26gcwin.py
 0 ACGACGCAGGA 0.6364
