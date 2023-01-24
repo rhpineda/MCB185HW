@@ -17,7 +17,8 @@ for i in range(len(list1)):
 		if (list1[i]!=list2[j]):
 			print(list1[i], list2[j])
 			count +=1
-		elif (list1[i]==list2[j]): continue
+		else:
+			continue
 	list2 = list2[1:]
 print(count)
 #---------------------------------------------------------------------------
