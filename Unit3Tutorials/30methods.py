@@ -2,7 +2,7 @@
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # Previously, we have use "function syntax", which has the form
 #    function(data)
@@ -10,11 +10,11 @@
 #    data.method()
 # Method syntax is also sometimes called object syntax
 #    object.method()
-
+print('#----------------------------------------------------------------------')
 s = 'ACGT'
 print(len(s))       # function syntax
 print(s.isupper())  # method syntax
-
+print('#----------------------------------------------------------------------')
 # We have seen a few case of "dots" before but these weren't object methods
 # However, they were object syntax
 # math.log2()        # a class function
@@ -26,38 +26,39 @@ print(s.isupper())  # method syntax
 
 s = '>>>>>ACGT<<<<<'
 print(s)
-
+print('#----------------------------------------------------------------------')
 # count() returns the number of times it finds a substring
 print(s.count('>'))
 print(s.count('>>'))
-
+print('#----------------------------------------------------------------------')
 # lstrip(), rstrip), and strip() remove characters at the ends of strings
 # by default this is whitespace, but can be multiple characters
 
 print(s.lstrip('>'))
 print(s.rstrip('<'))
 print(s.strip('<>'))
-
+print('#----------------------------------------------------------------------')
 # replace() exchanges characters or strings
 print(s.replace('>>', '.'))
 
 
 
-
+print('#----------------------------------------------------------------------')
 # upper() and lower() convert case
 # isupper() and islower() check for case
 print(s.lower())
 print(s.islower())
-
+print('#----------------------------------------------------------------------')
 # find() returns the index of the first substring it finds
 # rfind() searches backwards
 # they both return -1 if they don't find anything
 print(s.find('AC'))
 print(s.rfind('AC'))
 print(s.find('Z'))
-
+print('#---------------------------------------------------------------------------')
 # startswith() and endswith() search the start and end of strings
 print(s.startswith('>'))
 print(s.endswith('>'))
-
+print('#---------------------------------------------------------------------------')
+"""
 """
