@@ -1,8 +1,9 @@
+
 # 32lists.py
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # Lists are like tuples, but are mutable (you can change their contents)
 # Create lists with square brackets instead of (optional) parentheses
@@ -80,4 +81,5 @@ print(todo)
 count = [0] * 20
 print(count)
 
+"""
 """
