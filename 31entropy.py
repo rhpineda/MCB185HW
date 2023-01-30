@@ -27,7 +27,7 @@ shannon = 0
 
 for i in range(len(Shan_list)):
 	shannon = ((Shan_list[i])* math.log2(1/Shan_list[i])) + shannon 
-	print(f'{shannon:.3f}')
+print(f'{shannon:.3f}')
 #---------------------------------------------------------------------------
 
 """
