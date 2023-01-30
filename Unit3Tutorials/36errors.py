@@ -5,7 +5,7 @@ import sys
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # Once you start interacting with users, you will get erroneous input
 
@@ -46,5 +46,5 @@ for val in probs:
 		p = float(val)
 	except:
 		raise ValueError(f'cannot convert {val} to a number')
-
+"""
 """
