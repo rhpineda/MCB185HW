@@ -13,7 +13,6 @@ print(sys.argv) # the program name is the first item in the list
 
 # Move the triple quotes down to uncover the code
 
-"""
 
 # Here are two ways to navigate the command line arguments
 print('for i in range starting at 1')
@@ -34,5 +33,5 @@ print(total)
 
 # Why is the total of (1, 2, 3.14) 6.140000000000001 and not 6.14?
 # Floating point numbers have limited precision
-
+"""
 """
