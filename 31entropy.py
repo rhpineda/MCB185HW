@@ -26,12 +26,6 @@ assert(math.isclose(sum(Shan_list), 1.0)) #Input doesn't equal 1
 #calculate H
 shannon = 0 
 
-for val in Shan_list:
-	try:
-		p = float(val)
-	except:
-		print(f'cannot convert {val} to a number', file=sys.stderr)
-
 for i in range(len(Shan_list)):
 	print(Shan_list)
 	shannon = ((Shan_list[i])* math.log2(1/Shan_list[i])) + shannon 
