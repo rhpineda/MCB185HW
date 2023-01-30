@@ -13,8 +13,6 @@
 import math
 import sys
 
-
-
 #Create list given command line input
 Shan_list = []
 
