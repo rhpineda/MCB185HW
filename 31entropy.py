@@ -26,7 +26,6 @@ assert(math.isclose(sum(Shan_list), 1.0)) #Input doesn't equal 1
 shannon = 0 
 
 for i in range(len(Shan_list)):
-	print(Shan_list)
 	shannon = ((Shan_list[i])* math.log2(1/Shan_list[i])) + shannon 
 	print(f'{shannon:.3f}')
 #---------------------------------------------------------------------------
