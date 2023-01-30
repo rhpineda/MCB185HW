@@ -10,16 +10,16 @@ andy = ''
 for nt in range(len(dna)):
 	if dna[nt] == 'A':
 		andy = andy[:(len(andy))-nt] + 'T' + andy[(len(andy))-nt:] 
-		#print(andy)
+		print(andy)
 	elif dna[nt] == 'C':
 		andy = andy[:(len(andy))-nt] + 'G' + andy[(len(andy))-nt:] 
-		#print(andy)
+		print(andy)
 	elif dna[nt] == 'G':
 		andy = andy[:(len(andy))-nt] + 'C' + andy[(len(andy))-nt:] 
-		#print(andy)
+		print(andy)
 	elif dna[nt] == 'T':
 		andy = andy[:(len(andy))-nt] + 'A' + andy[(len(andy))-nt:] 
-		#print(andy)
+		print(andy)
 print(andy)
 
 #Or just reverse a string some other way
