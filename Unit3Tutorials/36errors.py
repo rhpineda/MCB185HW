@@ -17,7 +17,7 @@ print(sum(probs))
 
 # One way to handle this is for your program to exit
 
-#assert(sum(probs) == 1) # comment this line out to continue
+# assert(sum(probs) == 1) # comment this line out to continue
 
 # But what about rounding errors?
 # You should never ask for floating point numbers to be equal to a value
