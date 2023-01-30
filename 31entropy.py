@@ -19,7 +19,6 @@ Shan_list = []
 for val in sys.argv[1:]:
 	Shan_list.append(float(val))
 
-
 #stop incorrect input
 assert(math.isclose(sum(Shan_list), 1.0)) #Input doesn't equal 1
 
