@@ -6,9 +6,12 @@
 #---------------------------------------------------------------------------
 dna = 'ATAGCGAATATCTCTCATGAGAGGGAA'
 
-for nt in range(0,len(dna),3):
-	codon = dna[nt:nt+3]
-	print(codon)
+for i in range(0,len(dna),3):
+	print(dna[i:i+3])
+
+#for nt in range(0,len(dna),3):
+#	codon = dna[nt:nt+3]
+#	print(codon)
 #---------------------------------------------------------------------------
 """
 python3 21codons.py
