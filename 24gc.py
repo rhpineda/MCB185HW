@@ -5,11 +5,62 @@
 
 #---------------------------------------------------------------------------
 dna = 'ACAGAGCCAGCAGATATACAGCAGATACTAT'
+
+gccounter = 0
+
+
+for i in range(0,len(dna)): #dna[i] is equal to going over each nt
+	if dna[i] == 'C' or dna[i] == 'G':
+		gccounter = gccounter + 1
+
+print(f'{gccounter/len(dna):.2f}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 gc = 0
 for i in range(len(dna) -1):
 	if (dna[i] == 'G' or dna[i] ==  'C'):
 		gc += 1
 print(f'{gc/(len(dna)):.2f}')
+"""
 #---------------------------------------------------------------------------
 """
 python3 24gc.py
