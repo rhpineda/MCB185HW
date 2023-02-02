@@ -6,6 +6,54 @@
 # Variation: try this with the range() function and slice syntax
 #---------------------------------------------------------------------------
 dna = 'ACTGAAAAAAAAAAA'
+
+
+dna = dna[::-1]
+
+print(dna)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
+
 andy = ''	
 for nt in range(len(dna)):
 	if dna[nt] == 'A':
@@ -23,6 +71,7 @@ for nt in range(len(dna)):
 print(andy)
 
 #Or just reverse a string some other way
+"""
 #---------------------------------------------------------------------------
 """
 python3 26anti.py
