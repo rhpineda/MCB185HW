@@ -53,7 +53,6 @@ print('- end of loop 6')
 
 # Everything that is tabbed-over is within the same loop
 # Try removing the tab in front of i += 1 below
-
 i = 0
 for c in s:
 	print(i, c)
