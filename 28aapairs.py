@@ -7,7 +7,6 @@
 
 # Hint: if you get stuck for more than 10 minutes, get help
 #---------------------------------------------------------------------------
-
 #remove a from both after a run
 list1= 'ACDEFGHIKLMNPQRSTVWY' #Dont cange
 list2= 'ACDEFGHIKLMNPQRSTVWY' #Change
