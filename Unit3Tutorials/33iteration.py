@@ -17,7 +17,7 @@ sum2 = 0
 for x in p:
 	sum2 += x
 print(sum2)
-
+print('This is enum')
 # enumerate() hands you a tuple of (index, value) with each iteration
 for tup in enumerate(p):
 	print(tup)
@@ -25,7 +25,7 @@ for tup in enumerate(p):
 # as above but "unpacking" the tuple
 for i, v in enumerate(p):
 	print(i, v)
-
+print('This is zip')
 # zip() allows you to iterate over multiple containers simultaneously
 string = 'abcd'
 animals = ('ant', 'bat', 'cat', 'dog')
