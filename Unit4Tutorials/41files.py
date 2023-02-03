@@ -5,7 +5,7 @@ import sys
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # The most common way to get data into a program is by reading a file
 # Before reading a file you must open it first
@@ -60,5 +60,5 @@ with open('dangerous.txt', 'w') as fp:
 	fp.write('overwritten\n')
 
 # Instead of writing named output files, print to stdout and let user redirect
-
+"""
 """
