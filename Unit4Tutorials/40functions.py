@@ -5,7 +5,7 @@ import random
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # A function is created with the def keyword, a name, and a colon
 # All of the statements in a function are indented
@@ -70,5 +70,5 @@ def factorial(n):
 	else:        return n * factorial(n-1)
 
 print(factorial(0), factorial(5))
-
+"""
 """
