@@ -11,6 +11,8 @@
 # And subtracting 1 letter from the other side
 # Consider the pros/cons of this algorithm vs. nested loops
 #---------------------------------------------------------------------------
+
+
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 gc = 0
@@ -22,6 +24,7 @@ for i in range(len(seq)-(w-1)):
 			continue
 	print(i,seq[i:i+w],f'{gc/w:.4f}') #(f'{i,seq[i:i+w],gc/(len(dna)):.2f}')
 	gc = 0
+
 #---------------------------------------------------------------------------
 """
 python3 26gcwin.py
