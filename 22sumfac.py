@@ -7,34 +7,7 @@
 # Note: you may not import math or any other library
 
 #---------------------------------------------------------------------------
-n = 5
-sum = 0
-fac = 1
 
-for i in range(n):
-	sum = sum + i + 1
-	fac = fac*(i + 1)
-print(fac)
-print (n)
-print (sum)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
 n = 5
 sum = 0
 fac = 1
@@ -44,7 +17,7 @@ for i in range(n):
 print(n)
 print(sum)
 print(fac)
-"""
+
 #---------------------------------------------------------------------------
 
 """
