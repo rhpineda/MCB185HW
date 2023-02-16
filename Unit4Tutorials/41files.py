@@ -55,10 +55,9 @@ with gzip.open('example.txt.gz', 'rt') as fp: # this file is in Unit4/Tutorials
 # When you use an open() statement, the file is opened for reading by default
 # But you can also write files if you use 'w' as the second argument
 # This can be dangerous because it may overwrite a file that already exists
-
+"""
 with open('dangerous.txt', 'w') as fp:
 	fp.write('overwritten\n')
-
+"""
 # Instead of writing named output files, print to stdout and let user redirect
-"""
-"""
+

@@ -4,7 +4,7 @@ import random
 
 # Move the triple quotes downward to uncover each segment of code
 
-"""
+
 
 # There are times when you want to generate a bunch of data
 # Here's a function that returns a list of random sequences
@@ -53,5 +53,5 @@ for seq in seqgen(3000, 1000000): print(seq)
 
 for r in (random.random() for i in range(10)):
 	print(r)
-
+"""
 """
