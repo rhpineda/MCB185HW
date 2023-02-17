@@ -16,6 +16,7 @@ import sys
 AAtup = ('A','C','D','E','F','G','H','I','K','L','M','N','P',\
 		'Q','R','S','T','V','W','Y') # Can only use tuple to check if AA line
 Allaa = [] #Make a list to contain all AA
+
 with gzip.open(sys.argv[1], 'rt') as fp: #Open file
 	for line in fp.readlines(): #Looks over each line
 		if line.startswith(AAtup): #Checks to see if an AA line
