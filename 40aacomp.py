@@ -8,7 +8,32 @@
 
 # Variation: use 20 named variables
 # Variation: use a list
+#---------------------------------------------------------------------------
 
+import gzip
+import sys
+
+AAtup = ('A','C','D','E','F','G','H','I','K','L','M','N','P',\
+		'Q','R','S','T','V','W','Y') # Can only use tuple to check if AA line
+Allaa = [] #Make a list to contain all AA
+with gzip.open(sys.argv[1], 'rt') as fp: #Open file
+	for line in fp.readlines(): #Looks over each line
+		if line.startswith(AAtup): #Checks to see if an AA line
+			for i in range(len(line)-1): #Iterates over an AA line
+				Allaa.append(line[i]) #Add to list containing all AA
+		else: #Doesnt do anything to the non AA lines
+			continue
+
+for i in range(len(AAtup)): #Prints output 
+	print(AAtup[i], Allaa.count(AAtup[i]),\
+		f'{Allaa.count(AAtup[i])/len(Allaa):.4f}')
+
+"""
+1. Get code to open file
+2. Get code to only print AA
+3. Have a way to count those AA
+"""
+#---------------------------------------------------------------------------
 
 """
 python3 40aacomp.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_protein.faa.gz
