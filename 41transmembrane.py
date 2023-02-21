@@ -21,7 +21,50 @@
 # Hint: create a function for hydrophobic alpha-helix
 # Hint: use the same function for both signal peptide and transmembrane
 
+#---------------------------------------------------------------------------
+import sys
+import mcb185
 
+def KD(seq): #Fxn gives total KD for whatever seq is inputted.
+	totalkd = 0 
+	aastring= 'IVLFCMAGTSWYPHEQDNKR'
+	hydropathytup = (4.5, 4.2,3.8,2.8,2.5,1.9,1.8,-0.4,-0.7,-0.8\
+	,-0.9,-1.3,-1.6,-3.2,-3.5,-3.5,-3.5,-3.5,-3.9,-4.5)
+	for index in range(len(seq)): 
+		index = aastring.find(seq[index]) 
+		totalkd = totalkd + hydropathytup[index] 
+	return(float(totalkd))
+	
+def hptest(seq): #Fxn tells if there is a signal and if there's a TM region
+	signalseq = seq[:30] 
+	tmseq = seq[30:]
+	hassignal = False
+	hastmregion = False
+	
+	#Signal test ->tests for KD and see if proline around test window/a-helix
+	for i in range(len(signalseq)-8):
+		if (KD(signalseq[i:i+8])) > 2.5 and 'P' not in signalseq[i-8:i+8]:
+			hassignal = True
+			break
+		else:
+			continue
+	#TM test ->tests for KD and see if proline around test window/a-helix
+	for i in range(len(tmseq)-11): 
+		if (KD(tmseq[i:i+11])) > 2.0 and 'P' not in tmseq[i-8:i+8]:
+			hastmregion = True
+			break
+		else:
+			continue
+	return(hassignal, hastmregion)	
+	
+for defline, seq in mcb185.read_fasta(sys.argv[1]):
+	if hptest(seq) == (True, True): #Prints only if both signal seq present
+		print(defline)			  #and TM region present
+	else:
+		continue
+
+
+#---------------------------------------------------------------------------
 """
 python3 41transmembrane.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_protein.faa.gz
 NP_414560.1 Na(+):H(+) antiporter NhaA [Escherichia coli str. K-12 substr. MG1655]
