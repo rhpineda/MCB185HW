@@ -19,11 +19,9 @@ Allaa = [] #Make a list to contain all AA
 
 with gzip.open(sys.argv[1], 'rt') as fp: #Open file
 	for line in fp.readlines(): #Looks over each line
-		if line.startswith(AAtup): #Checks to see if an AA line
-			for i in range(len(line)-1): #Iterates over an AA line
-				Allaa.append(line[i]) #Add to list containing all AA
-		else: #Doesnt do anything to the non AA lines
-			continue
+		if line.startswith('>'): continue #Checks to see if an AA line
+		for i in range(len(line)-1): #Iterates over an AA line
+			Allaa.append(line[i]) #Add to list containing all AA
 
 for i in range(len(AAtup)): #Prints output 
 	print(AAtup[i], Allaa.count(AAtup[i]),\

@@ -46,15 +46,13 @@ def hptest(seq): #Fxn tells if there is a signal and if there's a TM region
 		if (KD(signalseq[i:i+8])) > 2.5 and 'P' not in signalseq[i-8:i+8]:
 			hassignal = True
 			break
-		else:
-			continue
+
 	#TM test ->tests for KD and see if proline around test window/a-helix
 	for i in range(len(tmseq)-11): 
-		if (KD(tmseq[i:i+11])) > 2.0 and 'P' not in tmseq[i-8:i+8]:
+		if (KD(tmseq[i:i+11])) > 2.0 and 'P' not in tmseq[i-11:i+11]:
 			hastmregion = True
 			break
-		else:
-			continue
+
 	return(hassignal, hastmregion)	
 	
 for defline, seq in mcb185.read_fasta(sys.argv[1]):
@@ -62,8 +60,8 @@ for defline, seq in mcb185.read_fasta(sys.argv[1]):
 		print(defline)			  #and TM region present
 	else:
 		continue
-
-
+#ALTERNATIVE WAY, ADD PARAMETERS TO HP TEST AND THEN ADD THE VALUES FOR KD 
+#THRESHOLD AND LENGTH OF "WINDOW" OF WHAT'S READ
 #---------------------------------------------------------------------------
 """
 python3 41transmembrane.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_protein.faa.gz
