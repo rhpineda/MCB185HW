@@ -43,13 +43,13 @@ def entropy(seq):
 	return(shannon)
 
 for defline, seq in mcb185.read_fasta(sys.argv[1]):
-	formattedseq = ''
+	modseq = seq
 	for i in range(len(seq)):
 		if (entropy(seq[i:i+window])) < entthresh:
-			seq = seq[:i] + 'N' + seq[i+1:]
+			modseq = modseq[:i] + 'N' + modseq[i+1:]
 	for i in range(0, len(seq) +180, 61):
-		seq = seq[:i] + "\n" + seq[i:]
-	print(defline,seq)
+		modseq = modseq[:i] + "\n" + modseq[i:]
+	print(defline,modseq)
 #---------------------------------------------------------------------------
 """
 python3 42dust.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz 11 1.4
