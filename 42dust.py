@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # 42dust.py
 
 # Write a program that performs entropy filtering on nucleotide fasta files
@@ -46,11 +47,9 @@ for defline, seq in mcb185.read_fasta(sys.argv[1]):
 	for i in range(len(seq)):
 		if (entropy(seq[i:i+window])) < entthresh:
 			seq = seq[:i] + 'N' + seq[i+1:]
-		else:
-			formattedseq += seq[i]
-	for i in range(0, len(formattedseq) +120, 60):
-		formattedseq = formattedseq[:i] + "\n" + formattedseq[i:]
-	print(defline, formattedseq)
+	for i in range(0, len(seq) +180, 61):
+		seq = seq[:i] + "\n" + seq[i:]
+	print(defline,seq)
 #---------------------------------------------------------------------------
 """
 python3 42dust.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz 11 1.4
