@@ -18,18 +18,22 @@
 # Hint: make a smaller file for testing (e.g. e.coli.fna in the CLI below)
 
 #---------------------------------------------------------------------------
+
 import argparse
 import mcb185
 import math
 
 parser = argparse.ArgumentParser(description= \
 	'Change middle nt in window if low entropy')
-parser.add_argument('-w', required=True, type=int, default=5,
+parser.add_argument('-w', required=False, type=int, default=11,
 	metavar='<int>', help='"word length used", default is: [%(default)i]')
-parser.add_argument('-t', required=True, type=float, default=1.5,
+	
+parser.add_argument('-t', required=False, type=float, default=1.4,
 	metavar='<float>', help='"entropy threshold", default is: [%(default)f]')
-parser.add_argument('-s',required=True, type=str,
-	metavar='<str>', help='file to evaluate, sample/default is [%(default)s]')
+	
+parser.add_argument('-s',required=True, type=str, 
+	metavar='<str>', help='file/string to evaluate')
+	
 parser.add_argument('-n', required=False, action='store_true',
 	help='N-based or soft masking')
 
@@ -41,10 +45,10 @@ def entropy(seq):
 	if len(seq) == 0:
 		return (0)
 	freq = [0,0,0,0]
-	freq[0] = seq.count('A')/len(seq)
-	freq[1] = seq.count('C')/len(seq)
-	freq[2] = seq.count('G')/len(seq)
-	freq[3] = seq.count('T')/len(seq)
+	freq[0] = seq.count('A')/len(seq)  + seq.count('a')/len(seq)
+	freq[1] = seq.count('C')/len(seq)  + seq.count('c')/len(seq)
+	freq[2] = seq.count('G')/len(seq)  + seq.count('g')/len(seq)
+	freq[3] = seq.count('T')/len(seq)  + seq.count('t')/len(seq)
 	shannon = 0 
 	for i in range(len(freq)):
 		if freq[i] == 0:
@@ -55,16 +59,18 @@ def entropy(seq):
 for defline, seq in mcb185.read_fasta(arg.s):
 	seq = seq.upper()
 	mods = seq 
-	for i in range(len(seq)) : 
-		if entropy(seq[i:i+window]) < entthresh and i+int(window/2) <len(seq):
+	for i in range(int(window/2), len(seq) - int(window/2)) : 
+		if entropy(seq[i-int(window/2):i+int(window/2)+1]) < entthresh:
 			if arg.n == True:
 				msk = 'N'
 			else: 
-				msk = str(mods[i+int(window/2)]).lower()
-			mods = mods[:i+int(window/2)] + msk + mods[i+int(window/2)+1:]
-	for i in range(0, len(seq) +180, 61):
+				msk = seq[i].lower()
+			mods = mods[:i] + msk + mods[i+1:]
+	
+	for i in range(0, len(mods) + int(len(mods)/60) , 61):
 		mods = mods[:i] + "\n" + mods[i:]
-	print(defline,mods)
+	print('>' + defline, mods)
+
 #---------------------------------------------------------------------------
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
