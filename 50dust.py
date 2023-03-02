@@ -59,13 +59,15 @@ def entropy(seq):
 for defline, seq in mcb185.read_fasta(arg.s):
 	seq = seq.upper()
 	mods = seq 
-	for i in range(int(window/2), len(seq) - int(window/2)) : 
-		if entropy(seq[i-int(window/2):i+int(window/2)+1]) < entthresh:
+	midwin = int(window/2)
+	for i in range((midwin), len(seq) - midwin) : 
+		if entropy(seq[i-midwin:i+midwin+1]) < entthresh:
 			if arg.n == True:
 				msk = 'N'
 			else: 
 				msk = seq[i].lower()
-			mods = mods[:i] + msk + mods[i+1:]
+			for j in range(i-midwin, i+midwin+1):
+				mods = mods[:j] + seq[j].lower() + mods[j+1:]		
 	
 	for i in range(0, len(mods) + int(len(mods)/60) , 61):
 		mods = mods[:i] + "\n" + mods[i:]
