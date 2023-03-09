@@ -23,26 +23,79 @@ import re
 parser = argparse.ArgumentParser(description='Input is file and min ORF size')
 parser.add_argument('-f', required=True, type=str, 
 	metavar='<str>', help='required, filepath')
-parser.add_argument('-o', required=False, type=int, default = 100,
+parser.add_argument('-o', required=False, type=int, default = 300,
 	metavar='<int>', help='minimum ORF length, default is 300nt')
 arg = parser.parse_args()
 
+def reverse_complement(seq):
+	rcseqlist = list(seq[::-1])
+	for i in range(len(seq)):
+		if rcseqlist[i] == 'A':
+			rcseqlist[i] = 'T'
+		elif rcseqlist[i] == 'C':
+			rcseqlist[i] = 'G'
+		elif rcseqlist[i] == 'G':
+			rcseqlist[i] = 'C'
+		elif rcseqlist[i] == 'T':
+			rcseqlist[i] = 'A'
+		else: rcseqlist[i] = '?'
+	return(''.join(rcseqlist))
+	
+def find_orf(seq):
+	orf = []
+	for h in range(3):
+		aaseq = mcb185.translate(seq, h)
+		for match in re.finditer('M\w{'+ str(int(arg.o/3)) + ',}\*', aaseq):
+			orf.append((match.span()[0]*3 + 1 + h, \
+			match.span()[1]*3 + h, \
+			'+', aaseq[match.span()[0]:match.span()[0] + 10]))
+			
+	for h in range(3):
+		aaseq = mcb185.translate(reverse_complement(seq), h)
+		for match in re.finditer('M\w{'+ str(int(arg.o/3)) + ',}\*', aaseq):
+			orf.append((len(seq) - (match.span()[1]*3 -1 + h), \
+			len(seq) - (match.span()[0]*3 + h), \
+			'-', aaseq[match.span()[0]:match.span()[0] + 10]))			
+	return (sorted(orf))
+	
+for pseqind, seq in mcb185.read_fasta(arg.f):
+	pseqind = pseqind.split(' ')[0]
+	#orf = find_orf(seq)
+	for sublist in find_orf(seq):
+		print(pseqind, sublist[0], sublist[1], sublist[2], sublist[3])
 
-	#translate all the seq and then search for ORFs in those sequences
-	#add some +- parameter
+
+#---------------------------------------------------------------------------
+
+#When printing for the coord, have some '+ window' for modification.
+""" OUTPUT IS BIOLOGICAL ANSWER, NEED TO ADD +1 TO START, AND +3 TO END
+python3 62orfs.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz
+NC_000913.3 108 500 - MVFSIIATRW #coordinates here are nt
+NC_000913.3 337 2799 + MRVLKFGGTS #frame0 1 lo, 3 lo
+NC_000913.3 2801 3733 + MVKVYAPASS #frame1 2 lo, 4 lo
+NC_000913.3 3512 4162 - MSHCRSGITG 2 lo
+NC_000913.3 3734 5020 + MKLYNLKDHN #frame1 2 lo, 4 lo
+NC_000913.3 3811 4119 - MVTGLSPAIW
+NC_000913.3 5310 5738 - MKIPPAMANW
+NC_000913.3 5683 6459 - MLILISPAKT
+NC_000913.3 6529 7959 - MPDFFSFINS
+NC_000913.3 7366 7773 + MKTASDCQQS #frame0 
+"""
+#---------------------------------------------------------------------------
+#MY WAY		
+"""
 for pseqind, seq in mcb185.read_fasta(arg.f):
 	orf = {}
 	#TURN INTO FXN
-	for h in range(3): #gives starts and stops for each frame, value is for aa coord, o
+	for h in range(3): 
+	#gives starts and stops for each frame, value is for aa coord, o
 		starts = []
 		stops = []
+		test = []
 		diff = arg.o
 		inseq = mcb185.translate(seq, h)
-		peps = inseq.split('*')
-		print(peps)
-		for match in re.finditer('M\w+\*', inseq):
-			print(match.span(), match.group())
-			#starts.append(match.start())
+		for match in re.dinfiter('M', inseq):
+			starts.append(match.start())
 		for match in re.finditer('\*', inseq):
 			stops.append(match.start())
 		i = 0
@@ -52,7 +105,7 @@ for pseqind, seq in mcb185.read_fasta(arg.f):
 			if stops[j] - starts[i] >= diff: 
 				#threshold met
 				#"+ vs - shit"
-				print(starts[currentstart]*3 + 1 + h, stops[j]*3 + 3 + h) 
+				#print(starts[currentstart]*3 + 1 + h, stops[j]*3 + 3 + h) 
 				#catch up to stop
 				while starts[i] < stops[j] and i < len(starts)-1: 
 					i+=1
@@ -68,12 +121,8 @@ for pseqind, seq in mcb185.read_fasta(arg.f):
 				i+=1
 			else:
 				j+=1
-
-#coordinate sys??:
-#				12345			6789
-#		+	5'(ACGTACGT)-----------(AAAAAAAA)3'
-#		-	3'(AAAAAAAA)-----------(ACGTACGT)5'
-#				1....				
+"""
+				
 
 #ALTERNATIVE WAY from office hours, something like:
 """
@@ -94,19 +143,4 @@ def orfs(seq, frame = 0)
 				i=j
 			break
 	i+=3
-"""
-#---------------------------------------------------------------------------
-#When printing for the coord, have some '+ window' for modification.
-""" OUTPUT IS BIOLOGICAL ANSWER, NEED TO ADD +1 TO START, AND +3 TO END
-python3 62orfs.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz
-NC_000913.3 108 500 - MVFSIIATRW #coordinates here are nt
-NC_000913.3 337 2799 + MRVLKFGGTS #frame0 1 lo, 3 lo
-NC_000913.3 2801 3733 + MVKVYAPASS #frame1 2 lo, 4 lo
-NC_000913.3 3512 4162 - MSHCRSGITG
-NC_000913.3 3734 5020 + MKLYNLKDHN #frame1 2 lo, 4 lo
-NC_000913.3 3811 4119 - MVTGLSPAIW
-NC_000913.3 5310 5738 - MKIPPAMANW
-NC_000913.3 5683 6459 - MLILISPAKT
-NC_000913.3 6529 7959 - MPDFFSFINS
-NC_000913.3 7366 7773 + MKTASDCQQS #frame0 
 """
