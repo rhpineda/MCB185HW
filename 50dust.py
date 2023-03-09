@@ -31,7 +31,7 @@ parser.add_argument('-w', required=False, type=int, default=11,
 parser.add_argument('-t', required=False, type=float, default=1.4,
 	metavar='<float>', help='"entropy threshold", default is: [%(default)f]')
 	
-parser.add_argument('-s',required=True, type=str, 
+parser.add_argument('s', required=True, type=str, 
 	metavar='<str>', help='file/string to evaluate')
 	
 parser.add_argument('-n', required=False, action='store_true',
