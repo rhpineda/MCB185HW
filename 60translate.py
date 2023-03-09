@@ -35,7 +35,6 @@ gcode = {
 	'TTA' : 'L',	'TTC' : 'F',	'TTG' : 'L',	'TTT' : 'F',
 }
 
-#Changed 'tcy' in actin cds to 'tct'
 
 actin_cds = "\
 atgtgtgacgacgaggttgccgctcttgttgtagacaatggatccggaatgtgcaaggcc\
@@ -47,7 +46,7 @@ gagcacccagtcctcctcactgaagccccactcaatccaaaggctaaccgtgaaaagatg\
 acccaaatcatgttcgagaccttcaacaccccagccatgtatgtcgccatccaagctgtc\
 ctctccctctacgcttccggacgtaccaccggagtcgtcctcgactctggagatggtgtc\
 acccacaccgtcccaatctacgaaggatatgccctcccacacgccatcctccgtcttgac\
-ttggctggacgtgatcttactgattacctcatgaagatccttaccgagcgtggttactct\
+ttggctggacgtgatcttactgattacctcatgaagatccttaccgagcgtggttactcy\
 ttcaccaccaccgctgagcgtgaaatcgtccgtgacatcaaggagaagctctgctacgtc\
 gccctcgacttcgagcaagaaatggccaccgccgcttcttcctcttccctcgagaagtct\
 tacgaacttcctgacggacaagtcatcaccgtcggaaacgaacgtttccgttgcccagag\
@@ -106,7 +105,7 @@ seq = actin_cds
 frame = 1
 
 print(mcb185.translate(seq))
-print(mcb185.translate(seq, frame))
+#print(mcb185.translate(seq, frame))
 
 
 

@@ -56,6 +56,7 @@ def translate(seq, frame = 0):
 
 	for i in range(frame,len(seq)-2,3):
 		idx = seq[i:i+3]
-		newprot += gcode[idx]
+		if idx in gcode: newprot += gcode[idx]
+		else: newprot += '?' #fallback if codon w/ anomalous nt
 	return(newprot)
 	
