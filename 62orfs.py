@@ -66,9 +66,8 @@ for pseqind, seq in mcb185.read_fasta(arg.f):
 
 
 #---------------------------------------------------------------------------
-
-#When printing for the coord, have some '+ window' for modification.
-""" OUTPUT IS BIOLOGICAL ANSWER, NEED TO ADD +1 TO START, AND +3 TO END
+#IDEAL OUTPUT
+"""
 python3 62orfs.py ~/DATA/E.coli/GCF_000005845.2_ASM584v2_genomic.fna.gz
 NC_000913.3 108 500 - MVFSIIATRW #coordinates here are nt
 NC_000913.3 337 2799 + MRVLKFGGTS #frame0 1 lo, 3 lo
@@ -122,7 +121,7 @@ for pseqind, seq in mcb185.read_fasta(arg.f):
 			else:
 				j+=1
 """
-				
+#---------------------------------------------------------------------------			
 
 #ALTERNATIVE WAY from office hours, something like:
 """
